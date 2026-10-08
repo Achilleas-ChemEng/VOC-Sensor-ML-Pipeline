@@ -3,15 +3,15 @@
 Welcome to my repository! This codebase contains the analytical pipeline I developed for my Chemical Engineering Diploma Thesis. 
 
 #What is this project about?
-The main goal of my thesis was to bridge Process Safety and Data Science. I wanted to evaluate how reliable low-cost Volatile Organic Compound (VOC) sensors actually are when compared to a highly accurate (and very expensive) reference instrument, the PTR-ToF-MS. 
+I wanted to evaluate how reliable low-cost Volatile Organic Compound (VOC) sensors actually are when compared to a highly accurate (and very expensive) reference instrument, the PTR-ToF-MS. 
 
-Since real-world industrial data is incredibly noisy and messy, I couldn't just compare the numbers in Excel. I built this custom Python pipeline to clean the signals, mathematically align the time delays, and use Machine Learning to figure out exactly which chemicals were triggering the sensors.
+Since data were incredibly noisy and messy, I couldn't just compare the numbers in Excel. I built this custom Python pipeline to clean the signals, mathematically align the time delays, and use Machine Learning to figure out exactly which chemicals were triggering the sensors.
 
 # The Code
 
 ## 1. `sensor_calibration_and_signal_processing.py`
 This script handles the raw data, signal processing, and statistical validation:
-* **Peak Detection :** It automatically finds the maximum concentration peaks and dynamically trims the signal tail (below a 15% threshold).
+* **Peak Detection :** It automatically finds the maximum concentration peaks and dynamically trims the signal tail (below a 5% threshold).
 * **Fixing Time Delays:** It uses cross-correlation (`scipy.signal.correlate`) to automatically calculate and correct the time lag between the PTR-MS and the cheap sensors.
 * **Metrics:** After aligning the data, it calculates key validation metrics like R^2, RMSE, and NME.
 
